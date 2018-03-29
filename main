@@ -1,0 +1,72 @@
+//
+//  main.c
+//  多项式+-*
+//
+//  Created by Jane on 2018/3/21.
+//  Copyright ? 2018年 Jane. All rights reserved.
+//
+
+
+#include<stdio.h>
+#include<stdlib.h>
+
+
+#include "struct_multi.h"
+#include "Input.h"//输入
+#include "Copy.h"//备份
+
+
+#include "Plus.h"//加
+#include "Substract.h"//减
+#include "Mutiply.h"//乘
+
+#include "Combine_like_terms.h"//合并同类项
+#include "Sort.h"//排序
+#include "Print.h"//打印
+#include "Free.h"//释放
+
+
+int main(void)
+{
+    struct multi *list1,*list2,*list3,*list4;
+    struct multi *list_plus,*list_subtract,*list_multiply;
+    
+    list1=Input();Sort(list1);
+    list2=Input();Sort(list2);
+    printf("多项式 A = ");Print(list1);
+    printf("多项式 B = ");Print(list2);
+    
+    
+    list3=Copy(list1);//加法，将两式复制以便操作
+    list4=Copy(list2);
+    list_plus=Plus(list3,list4);
+    printf(" A + B = ");
+    Print(list_plus);
+    
+    
+    list3=Copy(list1);//减法
+    list4=Copy(list2);
+    list_subtract=Subtract(list3,list4);
+    printf(" A - B = ");
+    Print(list_subtract);
+    
+    
+    list3=Copy(list1);//乘法
+    list4=Copy(list2);
+    list_multiply=Multiply(list3,list4);
+    printf(" A × B = ");
+    Print(list_multiply);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
